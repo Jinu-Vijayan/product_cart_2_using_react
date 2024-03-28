@@ -8,7 +8,7 @@ function reducer(state, action) {
   switch (action.type) {
     case "increase": {
       const data = [...state.products];
-      data[action.payLoad - 1].quatitySelected += 1;
+      data[action.payLoad.id - 1].quatitySelected = action.payLoad.quantity + 1;
       return {
         ...state,
         products: data,
@@ -16,8 +16,8 @@ function reducer(state, action) {
     }
     case "decrease": {
       const data = [...state.products];
-      if (data[action.payLoad - 1].quatitySelected > 0) {
-        data[action.payLoad - 1].quatitySelected -= 1;
+      if (data[action.payLoad.id - 1].quatitySelected > 0) {
+        data[action.payLoad.id - 1].quatitySelected = action.payLoad.quantity - 1;
       }
       return {
         ...state,
